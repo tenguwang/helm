@@ -1,0 +1,6 @@
+apiVersion: v2
+name: dljy
+description: 山西合邦电力交易平台搭建
+type: application
+version: 0.0.1
+appVersion: "2.9.0"

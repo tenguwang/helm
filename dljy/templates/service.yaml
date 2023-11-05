@@ -1,0 +1,15 @@
+{{- range .Values.SVC }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .name }}
+  namespace: {{ $.Values.Comm.namespace }}
+spec:
+  clusterIP: None
+  selector:
+    app: {{ .name }}
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: {{ .targetPort}}
+{{ end }}

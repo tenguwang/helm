@@ -1,0 +1,68 @@
+{{- range .Values.Projects }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .name }}
+  namespace: {{ $.Values.Comm.namespace }}
+spec:
+  replicas: {{ .replicas }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: {{ .name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .name }}
+    spec:
+      imagePullSecrets:
+        - name: registry-aliyun
+      containers:
+        - name: {{ .name }}
+          image: {{ $.Values.Comm.images_domin }}/{{ .image }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .port }}
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+          env:
+            - name: area
+              valueFrom:
+                secretKeyRef:
+                  name: pta
+                  key: area
+            - name: nacos_url
+              valueFrom:
+                secretKeyRef:
+                  name: pta
+                  key: nacos_url
+            - name: nacos_user
+              valueFrom:
+                secretKeyRef:
+                  name: pta
+                  key: nacos_user
+            - name: nacos_passwd
+              valueFrom:
+                secretKeyRef:
+                  name: pta
+                  key: nacos_passwd
+            - name: namespace
+              valueFrom:
+                secretKeyRef:
+                  name: pta
+                  key: namespace
+            - name: group
+              valueFrom:
+                secretKeyRef:
+                  name: pta
+                  key: group
+{{- end }}

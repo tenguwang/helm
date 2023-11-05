@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microfront
+  namespace: {{ .Values.Comm.namespace }}
+spec:
+  replicas: {{ .Values.MicroFront.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.MicroFront.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.MicroFront.name }}
+    spec:
+      imagePullSecrets:
+        - name: registry-aliyun
+      containers:
+        - name: {{ .Values.MicroFront.name }}
+          image: {{ .Values.Comm.images_domin }}/{{ .Values.MicroFront.image }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.MicroFront.port }}

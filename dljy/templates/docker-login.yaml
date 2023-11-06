@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: registry-aliyun
+  namespace: {{ .Values.Comm.namespace }}
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: eyJhdXRocyI6IHsicmVnaXN0cnkuY24tYmVpamluZy5hbGl5dW5jcy5jb20iOiB7InVzZXJuYW1lIjogInRlbmd1d2FuZyIsICJwYXNzd29yZCI6ICJMb25nMTEwNDI3LiIsICJlbWFpbCI6ICJ0ZW5ndXdhbmdAMTYzLmNvbSJ9fX0=

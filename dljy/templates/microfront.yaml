@@ -20,4 +20,4 @@ spec:
           image: {{ .Values.Comm.images_domin }}/{{ .Values.MicroFront.image }}
           imagePullPolicy: Always
           ports:
-            - containerPort: {{ .Values.MicroFront.port }}
+            - containerPort: 80

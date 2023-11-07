@@ -3,60 +3,61 @@ Comm:
   images_domin: registry.cn-beijing.aliyuncs.com/lucentwang
 
 Projects:
-  - name: pta-gateway
+  pta: 
+    - name: pta-gateway
+      replicas: 1
+      image: pta-gateway:latest
+
+    - name: pta-modules-analyze
+      replicas: 1
+      image: pta-modules-analyze:latest
+
+    - name: pta-modules-business
+      replicas: 1
+      image: pta-modules-business:latest
+
+    - name: pta-modules-contract
+      replicas: 1
+      image: pta-modules-contract:latest
+
+    - name: pta-modules-datacollection
+      replicas: 1
+      image: pta-modules-datacollection:latest
+      
+    - name: pta-modules-disclosure
+      replicas: 1
+      image: pta-modules-disclosure:latest
+
+    - name: pta-modules-electric
+      replicas: 1
+      image: pta-modules-electric:latest
+
+    - name: pta-modules-file
+      replicas: 1
+      image: pta-modules-file:latest
+
+    - name: pta-modules-guest-manage
+      replicas: 1
+      image: pta-modules-guest-manage:latest
+
+    - name: pta-modules-job
+      replicas: 1
+      image: pta-modules-job:latest
+
+    - name: pta-modules-weather
+      replicas: 1
+      image: pta-modules-weather:latest
+
+  uap: 
+    name: uap
     replicas: 1
-    image: pta-gateway:latest
-    port: 8080
-  - name: pta-modules-analyze
-    replicas: 1
-    image: pta-modules-analyze:latest
-    port: 8080
-  - name: pta-modules-business
-    replicas: 1
-    image: pta-modules-business:latest
-    port: 8080
-  - name: pta-modules-contract
-    replicas: 1
-    image: pta-modules-contract:latest
-    port: 8080
-  - name: pta-modules-datacollection
-    replicas: 1
-    image: pta-modules-datacollection:latest
-    port: 8080
-  - name: pta-modules-disclosure
-    replicas: 1
-    image: pta-modules-disclosure:latest
-    port: 8080
-  - name: pta-modules-electric
-    replicas: 1
-    image: pta-modules-electric:latest
-    port: 8080
-  - name: pta-modules-file
-    replicas: 1
-    image: pta-modules-file:latest
-    port: 8080
-  - name: pta-modules-guest-manage
-    replicas: 1
-    image: pta-modules-guest-manage:latest
-    port: 8080
-  - name: pta-modules-job
-    replicas: 1
-    image: pta-modules-job:latest
-    port: 8080
-  - name: pta-modules-weather
-    replicas: 1
-    image: pta-modules-weather:latest
-    port: 8080
-  - name: uap 
-    replicas: 3
     image: uap:latest
-    port: 8080
+
 
 MicroFront: 
   name: microfront
-  replicas: 3
+  replicas: 1
   image: microfront:latest
-  port: 80
   nodePort: 32090
   
 

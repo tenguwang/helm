@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microfront
+  namespace: {{ .Values.Comm.namespace }}
+spec:
+  replicas: {{ .Values.Projects.MicroFront.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.Projects.MicroFront.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.Projects.MicroFront.name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.Comm.imagePullSecrets }}
+      containers:
+        - name: {{ .Values.Projects.MicroFront.name }}
+          image: {{ .Values.Comm.images_domin }}/{{ .Values.Projects.MicroFront.name }}:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

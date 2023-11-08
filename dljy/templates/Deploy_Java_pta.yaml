@@ -1,10 +1,11 @@
+{{- range .Values.Projects.pta }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.Projects.uap.name }}
+  name: {{ .name }}
   namespace: {{ $.Values.Comm.namespace }}
 spec:
-  replicas: {{ .Values.Projects.uap.replicas }}
+  replicas: {{ .replicas }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -12,24 +13,24 @@ spec:
       maxUnavailable: 1
   selector:
     matchLabels:
-      app: uap
+      app: {{ .name }}
   template:
     metadata:
       labels:
-        app: uap
+        app: {{ .name }}
     spec:
       imagePullSecrets:
-        - name: registry-aliyun
+        - name: {{ $.Values.Comm.imagePullSecrets }}
       containers:
-        - name: uap
-          image: {{ $.Values.Comm.images_domin }}/{{ .Values.Projects.uap.image }}
+        - name: {{ .name }}
+          image: {{ $.Values.Comm.images_domin }}/{{ .name }}:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           resources:
             limits:
-              cpu: "1"
-              memory: "1Gi"
+              cpu: {{ .limits.cpu }}
+              memory: {{ .limits.memory }}
             requests:
               cpu: "500m"
               memory: "512Mi"
@@ -37,31 +38,32 @@ spec:
             - name: area
               valueFrom:
                 secretKeyRef:
-                  name: uap
+                  name: pta
                   key: area
             - name: nacos_url
               valueFrom:
                 secretKeyRef:
-                  name: uap
+                  name: pta
                   key: nacos_url
             - name: nacos_user
               valueFrom:
                 secretKeyRef:
-                  name: uap
+                  name: pta
                   key: nacos_user
             - name: nacos_passwd
               valueFrom:
                 secretKeyRef:
-                  name: uap
+                  name: pta
                   key: nacos_passwd
             - name: namespace
               valueFrom:
                 secretKeyRef:
-                  name: uap
+                  name: pta
                   key: namespace
             - name: group
               valueFrom:
                 secretKeyRef:
-                  name: uap
+                  name: pta
                   key: group
-      restartPolicy: Always
+---
+{{- end }}

@@ -1,67 +1,92 @@
 Comm:
   namespace: pta
   images_domin: registry.cn-beijing.aliyuncs.com/lucentwang
+  imagePullSecrets: registry-aliyun
 
 Projects:
   pta: 
     - name: pta-gateway
-      replicas: 1
-      image: pta-gateway:latest
+      replicas: 3
+      limits: 
+        cpu: 1
+        memory: 1Gi
 
     - name: pta-modules-analyze
-      replicas: 1
-      image: pta-modules-analyze:latest
+      replicas: 2
+      limits: 
+        cpu: 1
+        memory: 1Gi
 
     - name: pta-modules-business
-      replicas: 1
-      image: pta-modules-business:latest
+      replicas: 2
+      limits: 
+        cpu: 1
+        memory: 1Gi
 
     - name: pta-modules-contract
-      replicas: 1
-      image: pta-modules-contract:latest
+      replicas: 2
+      limits: 
+        cpu: 2
+        memory: 2Gi
 
     - name: pta-modules-datacollection
-      replicas: 1
-      image: pta-modules-datacollection:latest
+      replicas: 2
+      limits: 
+        cpu: 1
+        memory: 1Gi
       
     - name: pta-modules-disclosure
-      replicas: 1
-      image: pta-modules-disclosure:latest
+      replicas: 2
+      limits: 
+        cpu: 3
+        memory: 3Gi
 
     - name: pta-modules-electric
-      replicas: 1
-      image: pta-modules-electric:latest
+      replicas: 2
+      limits: 
+        cpu: 1
+        memory: 1Gi
 
     - name: pta-modules-file
-      replicas: 1
-      image: pta-modules-file:latest
+      replicas: 2
+      limits: 
+        cpu: 1
+        memory: 1Gi
 
     - name: pta-modules-guest-manage
-      replicas: 1
-      image: pta-modules-guest-manage:latest
+      replicas: 2
+      limits: 
+        cpu: 1
+        memory: 1Gi
 
     - name: pta-modules-job
-      replicas: 1
-      image: pta-modules-job:latest
+      replicas: 2
+      limits: 
+        cpu: 1
+        memory: 1Gi
 
     - name: pta-modules-weather
-      replicas: 1
-      image: pta-modules-weather:latest
+      replicas: 2
+      limits: 
+        cpu: 1.5
+        memory: 2Gi
 
   uap: 
     name: uap
-    replicas: 1
-    image: uap:latest
+    replicas: 3
+    limits: 
+      cpu: 1
+      memory: 1Gi
 
-
-MicroFront: 
-  name: microfront
-  replicas: 1
-  image: microfront:latest
-  nodePort: 32090
+  MicroFront: 
+    name: microfront
+    replicas: 3
+    limits: 
+      cpu: 1
+      memory: 1Gi
   
 
-Config:
+Secret:
   nacos: 
     area: "pro"
     nacos_url: "nacos-hs.middleware.svc.cluster.local:8848"

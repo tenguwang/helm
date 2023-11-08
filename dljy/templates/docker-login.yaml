@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: registry-aliyun
+  name: {{ .Values.Comm.imagePullSecrets }}
   namespace: {{ .Values.Comm.namespace }}
 type: kubernetes.io/dockerconfigjson
 data:

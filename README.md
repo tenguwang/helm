@@ -4,7 +4,7 @@
 1. 添加chart仓库
 
    ```shell
-   ➜  helm repo add pta https://tenguwang.github.io/helm/
+   ➜  helm repo add dljy https://tenguwang.github.io/helm/
    ```
 
    
@@ -14,7 +14,7 @@
    ```shell
    ➜  helm repo list
    NAME         	URL
-   pta          	https://tenguwang.github.io/helm/
+   dljy          	https://tenguwang.github.io/helm/
    ```
 
 3. 搜索chart包

@@ -7,8 +7,6 @@
    ➜  helm repo add dljy https://tenguwang.github.io/helm/
    ```
 
-   
-
 2. 验证是否添加成功
 
    ```shell
@@ -17,18 +15,16 @@
    dljy          	https://tenguwang.github.io/helm/
    ```
 
-3. 搜索chart包
+3. 更新chart程序
 
    ```shell
-   ➜  helm search repo pta
-   NAME          	CHART VERSION	APP VERSION	DESCRIPTION
-   bitnami/moodle	16.1.6       	4.2.1      	Moodle(TM) LMS is an open source online Learnin..
+   ➜  helm repo update
    ```
 
-4. 安装chart包
+1. 安装chart包
 
    ```shell
-   helm upgrade --install pta pta/dljy --create-namespace -n pta
+   helm upgrade --install dljy dljy/ --create-namespace -n pta
    ```
 
    

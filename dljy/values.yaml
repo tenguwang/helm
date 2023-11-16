@@ -1,5 +1,5 @@
 Comm:
-  namespace: pta
+  namespace: dljy
   images_domin: registry.cn-beijing.aliyuncs.com/lucentwang
   imagePullSecrets: registry-aliyun
 
@@ -109,4 +109,7 @@ SVC:
   pta: 
     name: pta-gateway
     targetPort: 8080
-    
+  microfront: 
+    name: microfront
+    type: NodePort
+    port: 80

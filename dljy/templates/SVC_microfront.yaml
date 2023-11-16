@@ -8,6 +8,6 @@ spec:
     app: {{ .Values.Projects.MicroFront.name }}
   ports:
     - protocol: TCP
-      port: 80
+      port: {{ .Values.SVC.microfront.port }}
       targetPort: 80
-  type: NodePort
+  type: {{ .Values.SVC.microfront.type }}

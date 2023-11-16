@@ -24,7 +24,7 @@
 1. 安装chart包
 
    ```shell
-   helm upgrade --install dljy dljy/ --create-namespace -n pta
+   helm upgrade --install dljy dljy/ --create-namespace -n dljy
    ```
 
    
